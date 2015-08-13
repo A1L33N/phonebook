@@ -16,4 +16,20 @@ describe Phone do
       expect(test_number.type).to eq('home')
     end
   end
+
+  describe('.all') do
+    it('returns all saved numbers') do
+      expect(Phone.all).to eq([])
+    end
+  end
+
+  describe('#save') do
+    it 'saves a number to a list of all numbers' do
+      test_number = Phone.new({:area_code => 210, :number => 1234567, :type => 'home'})
+      test_number.save
+      test_number2 = Phone.new({:area_code => 210, :number => 3334444, :type => 'work'})
+      test_number2.save
+      expect(Phone.all).to eq ([test_number, test_number2])
+    end
+  end
 end
