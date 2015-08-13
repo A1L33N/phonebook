@@ -2,4 +2,22 @@
 
 <h2>Phone Numbers:</h2>
 
+<ul>
+  <% Phone.all.each() do |number| %>
+  <li><%= number.complete_number %></li>
+  <% end %>
+</ul>
+
+<form id="form_id" action="/contact_info" method="post">
+  <label for="area_code">Enter Area Code</label>
+  <input type="number" name="area_code" id="area_code">
+
+  <label for="phone_number">Enter Phone Number</label>
+  <input type="number" name="phone_number" id="phone_number">
+
+  <label for="phone_type">Enter Phone Type</label>
+  <input type="text" name="phone_type" id="phone_type">
+  <button type="submit">Add Number</button>
+</form>>
+
 <a href="/">Return to Contact List</a>
