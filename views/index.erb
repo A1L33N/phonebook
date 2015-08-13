@@ -1,0 +1,12 @@
+<h1>My Contacts</h1>
+
+<a href="/contact_form">Add New Contact</a>
+
+<h2>Contact List</h2>
+<ul>
+  <% Contact.all.each() do |contact| %>
+    <li><a href='/contact_info/<%=contact.id%>'><%= contact.last_name %>, <%= contact.first_name %></a></li>
+  <% end %>
+</ul>
+
+<a href="/clear">Clear Contact List</a>
