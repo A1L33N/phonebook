@@ -74,8 +74,9 @@ describe(Contact) do
     it('adds a phone number to phone numbers array') do
       test_contact = Contact.new({:last_name => 'Jackson', :first_name => 'Bob'})
       test_contact.save
-      test_contact.add_phone('(310) 583-9933')
-      expect(test_contact.phone_numbers).to eq ((['(310) 583-9933']))
+      test_number = Phone.new({:area_code => 210, :number => 1234567, :type => 'home'})
+      test_contact.add_phone(test_number)
+      expect(test_contact.phone_numbers).to eq([test_number])
     end
   end
 
