@@ -29,5 +29,9 @@ class Contact
     found_contact
   end
 
+  define_method(:delete_contact) do
+    @@all_contacts.delete(self)
+  end
+
 
 end

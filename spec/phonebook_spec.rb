@@ -55,4 +55,17 @@ describe(Contact) do
       expect(Contact.find(1)).to eq(test_contact)
     end
   end
+
+  describe('#delete_contact') do
+    it('deletes a contact from saved contacts') do
+      test_contact = Contact.new({:last_name => 'Jackson', :first_name => 'Bob'})
+      test_contact.save
+      test_contact2 = Contact.new({:last_name => 'Doe', :first_name => 'John'})
+      test_contact2.save
+      test_contact3 = Contact.new({:last_name => 'Doe', :first_name => 'Jane'})
+      test_contact3.save
+      test_contact2.delete_contact
+      expect(Contact.all).to eq [test_contact, test_contact3]
+    end
+  end
 end
