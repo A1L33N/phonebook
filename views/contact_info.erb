@@ -8,7 +8,8 @@
   <% end %>
 </ul>
 
-<form id="form_id" action="/contact_info" method="post">
+<form id="form_id" action="/contact_info/:id" method="post">
+  <input id='contact_info' name='contact_info' type='hidden' value='<%= @contact_info.id() %>'
   <label for="area_code">Enter Area Code</label>
   <input type="number" name="area_code" id="area_code">
 
