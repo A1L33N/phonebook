@@ -40,7 +40,7 @@ class Contact
     @phone_numbers.push(phone_number)
   end
 
-  define_method(:email) do |email|
+  define_method(:add_email) do |email|
     @emails.push(email)
   end
 

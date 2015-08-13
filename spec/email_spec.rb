@@ -3,6 +3,9 @@ require 'pry'
 require 'email'
 
 describe('Email') do
+  before do
+    Email.clear
+  end
   describe('#type') do
     it('returns the type of email') do
       test_email=Email.new({:email => 'fakemail@gmail.com', :type => 'personal'})
@@ -36,6 +39,17 @@ describe('Email') do
       test_email = Email.new({:email => 'amanda@yahoo.com', :type => 'work'})
       Email.clear
       expect(Email.all).to eq([])
+    end
+  end
+
+  describe('#delete_email') do
+    it('delete specific email from list of emails') do
+      test_email = Email.new({:email => 'john@yahoo.com', :type => 'work'})
+      test_email2 = Email.new({:email => 'amanda@yahoo.com', :type => 'work'})
+      test_email.save
+      test_email2.save
+      test_email.delete_email
+      expect(Email.all).to eq([test_email2])
     end
   end
 end

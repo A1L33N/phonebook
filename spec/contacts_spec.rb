@@ -1,6 +1,7 @@
 require('rspec')
 require('contacts')
 require('phone_numbers')
+require('email')
 require('pry')
 
 describe(Contact) do
@@ -84,7 +85,9 @@ describe(Contact) do
     it('adds an email to an email array') do
       test_contact = Contact.new({:last_name => 'Jackson', :first_name => 'Bob'})
       test_contact.save
-      expect(test_contact.email('fakemail@gmail.com')).to eq (['fakemail@gmail.com'])
+      test_email = Email.new({:email => 'gale@gmail.com', :type => 'personal'})
+      test_contact.add_email(test_email)
+      expect(test_contact.emails()).to eq([test_email])
     end
   end
 

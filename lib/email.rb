@@ -17,4 +17,8 @@ class Email
   define_singleton_method(:clear) do
     @@all_emails=[]
   end
+
+  define_method(:delete_email) do
+    @@all_emails.delete(self)
+  end
 end
