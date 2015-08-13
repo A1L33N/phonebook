@@ -32,4 +32,28 @@ describe Phone do
       expect(Phone.all).to eq ([test_number, test_number2])
     end
   end
+
+  describe('.clear') do
+    it 'clears all numbers from save numbers' do
+      test_number = Phone.new({:area_code => 210, :number => 1234567, :type => 'home'})
+      test_number.save
+      test_number2 = Phone.new({:area_code => 210, :number => 3334444, :type => 'work'})
+      test_number2.save
+      Phone.clear
+      expect(Phone.all).to eq([])
+    end
+  end
+
+  describe('#delete') do
+    it 'deletes a specific number from the saved numbers' do
+      test_number = Phone.new({:area_code => 210, :number => 1234567, :type => 'home'})
+      test_number.save
+      test_number2 = Phone.new({:area_code => 210, :number => 3334444, :type => 'work'})
+      test_number2.save
+      test_number3 = Phone.new({:area_code => 210, :number => 2224444, :type => 'work'})
+      test_number3.save
+      test_number2.delete
+      expect(Phone.all).to eq([test_number, test_number3])
+    end
+  end
 end

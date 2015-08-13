@@ -20,4 +20,13 @@ class Phone
   define_method(:save) do
     @@all_numbers.push(self)
   end
+
+  define_singleton_method(:clear) do
+    @@all_numbers = []
+  end
+
+  define_method(:delete) do
+    @@all_numbers.delete(self)
+  end
+
 end
