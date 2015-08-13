@@ -1,5 +1,6 @@
 require('rspec')
-require('phonebook')
+require('contacts')
+require('phone_numbers')
 require('pry')
 
 describe(Contact) do
@@ -66,6 +67,31 @@ describe(Contact) do
       test_contact3.save
       test_contact2.delete_contact
       expect(Contact.all).to eq [test_contact, test_contact3]
+    end
+  end
+
+  describe('#add_phone') do
+    it('adds a phone number to phone numbers array') do
+      test_contact = Contact.new({:last_name => 'Jackson', :first_name => 'Bob'})
+      test_contact.save
+      test_contact.add_phone('(310) 583-9933')
+      expect(test_contact.phone_numbers).to eq ((['(310) 583-9933']))
+    end
+  end
+
+  describe('#add_email') do
+    it('adds an email to an email array') do
+      test_contact = Contact.new({:last_name => 'Jackson', :first_name => 'Bob'})
+      test_contact.save
+      expect(test_contact.email('fakemail@gmail.com')).to eq (['fakemail@gmail.com'])
+    end
+  end
+
+  describe('#add_address') do
+    it('adds an address to an address array') do
+      test_contact = Contact.new({:last_name => 'Jackson', :first_name => 'Bob'})
+      test_contact.save
+      expect(test_contact.address('100 Fake Street')).to eq(['100 Fake Street'])
     end
   end
 end
